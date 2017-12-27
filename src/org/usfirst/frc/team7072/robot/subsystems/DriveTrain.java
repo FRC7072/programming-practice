@@ -7,9 +7,11 @@ import org.usfirst.frc.team7072.robot.commands.DriveWithJoystick;
 
 import com.ctre.CANTalon;
 
+import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 public class DriveTrain extends Subsystem {
 	
@@ -23,10 +25,14 @@ public class DriveTrain extends Subsystem {
 	private RobotDrive frontDrive;
 	private RobotDrive backDrive;
 	
+	public static ADXRS450_Gyro gyroAccel = new ADXRS450_Gyro();
+	
 	public DriveTrain() {
 		// TODO Auto-generated constructor stub
 		frontDrive = new RobotDrive(leftFrontMotor, rightFrontMotor);
 		backDrive = new RobotDrive(leftBackMotor, rightBackMotor);
+		
+		LiveWindow.addSensor("Drive Train", "gyro-accel", gyroAccel);
 	}
 	
 	@Override
@@ -47,5 +53,6 @@ public class DriveTrain extends Subsystem {
 	public void stop() {
 		frontDrive.tankDrive(0, 0);
 		backDrive.tankDrive(0, 0);
+		gyroAccel.reset();
 	}
 }

@@ -11,7 +11,7 @@ import org.usfirst.frc.team7072.robot.commands.ExampleCommand;
  */
 public class OI {
 	
-	private Joystick pilotJoystick;
+	private Joystick pilotJoystick = new Joystick(0);
 	
 	public Joystick getPilotController() {
 		return pilotJoystick;
