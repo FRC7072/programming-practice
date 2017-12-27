@@ -1,7 +1,5 @@
 package org.usfirst.frc.team7072.robot.subsystems;
 
-import java.rmi.server.SkeletonNotFoundException;
-
 import org.usfirst.frc.team7072.robot.RobotMap;
 import org.usfirst.frc.team7072.robot.commands.DriveWithJoystick;
 
@@ -42,12 +40,12 @@ public class DriveTrain extends Subsystem {
 	
 	public void tankDrive(Joystick controller) {
 		// TODO Figure out the actual axis value for logitech controller
-		tankDrive(controller.getY(), controller.getRawAxis(4));
+		tankDrive(controller.getRawAxis(1), controller.getRawAxis(3));
 	}
 	
 	public void tankDrive(double leftValue, double rightValue) {
-		frontDrive.tankDrive(leftValue, rightValue, true);
-		backDrive.tankDrive(leftValue, rightValue, true);
+		frontDrive.tankDrive(-leftValue, -rightValue, true);
+		backDrive.tankDrive(-leftValue, -rightValue, true);
 	}
 	
 	public void stop() {

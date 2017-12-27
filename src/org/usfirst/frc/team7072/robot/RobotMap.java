@@ -1,7 +1,5 @@
 package org.usfirst.frc.team7072.robot;
 
-import edu.wpi.first.wpilibj.ADXRS450_Gyro;
-
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
  * to a variable name. This provides flexibility changing wiring, makes checking
