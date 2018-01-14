@@ -2,8 +2,10 @@ package org.usfirst.frc.team7072.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 import org.usfirst.frc.team7072.robot.commands.ExampleCommand;
+import org.usfirst.frc.team7072.robot.commands.SwitchSquaredDriving;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -12,6 +14,12 @@ import org.usfirst.frc.team7072.robot.commands.ExampleCommand;
 public class OI {
 	
 	private Joystick pilotJoystick;
+	
+	public OI() {
+		pilotJoystick = new Joystick(0);
+		Button switchSquaredDriving = new JoystickButton(getPilotController(), 3);
+		switchSquaredDriving.whenPressed(new SwitchSquaredDriving());
+	}
 	
 	public Joystick getPilotController() {
 		return pilotJoystick;

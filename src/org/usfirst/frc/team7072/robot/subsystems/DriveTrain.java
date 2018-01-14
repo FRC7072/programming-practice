@@ -1,12 +1,13 @@
 package org.usfirst.frc.team7072.robot.subsystems;
 
+import java.awt.peer.LightweightPeer;
+
 import org.usfirst.frc.team7072.robot.RobotMap;
 import org.usfirst.frc.team7072.robot.commands.DriveWithJoystick;
 
 import edu.wpi.first.wpilibj.PWMTalonSRX;
 
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.PWMTalonSRX;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
@@ -21,6 +22,8 @@ public class DriveTrain extends Subsystem {
 	public SpeedControllerGroup leftMotors = new SpeedControllerGroup(leftFrontMotor, leftBackMotor);
 	public SpeedControllerGroup rightMotors = new SpeedControllerGroup(rightFrontMotor, rightBackMotor);
 	
+	private boolean squaredSpeed = true;
+	
 	//Need both front and back drives working together since there are two motor on
 	// each side powering the same wheels.
 	private DifferentialDrive drive;
@@ -32,6 +35,13 @@ public class DriveTrain extends Subsystem {
 	@Override
 	protected void initDefaultCommand() {
 		setDefaultCommand(new DriveWithJoystick());
+		switchSquaredSpeed();
+		switchSquaredSpeed();
+		switchSquaredSpeed();
+	}
+	
+	public void switchSquaredSpeed() {
+		squaredSpeed = !squaredSpeed;
 	}
 	
 	public void tankDrive(Joystick controller) {
@@ -40,7 +50,7 @@ public class DriveTrain extends Subsystem {
 	}
 	
 	public void tankDrive(double leftValue, double rightValue) {
-		drive.tankDrive(leftValue, rightValue, true);
+		drive.tankDrive(leftValue, rightValue, squaredSpeed);
 	}
 	
 	public void stop() {

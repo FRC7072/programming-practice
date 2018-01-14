@@ -1,9 +1,6 @@
 package org.usfirst.frc.team7072.robot.commands;
 
 import org.usfirst.frc.team7072.robot.Robot;
-
-import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
