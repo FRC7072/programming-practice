@@ -5,19 +5,20 @@ import java.awt.peer.LightweightPeer;
 import org.usfirst.frc.team7072.robot.RobotMap;
 import org.usfirst.frc.team7072.robot.commands.DriveWithJoystick;
 
-import edu.wpi.first.wpilibj.PWMTalonSRX;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class DriveTrain extends Subsystem {
 	
-	public PWMTalonSRX leftFrontMotor = new PWMTalonSRX(RobotMap.leftFrontMotor);
-	public PWMTalonSRX leftBackMotor = new PWMTalonSRX(RobotMap.leftBackMotor);
-	public PWMTalonSRX rightFrontMotor = new PWMTalonSRX(RobotMap.rightFrontMotor);
-	public PWMTalonSRX rightBackMotor = new PWMTalonSRX(RobotMap.rightBackMotor);
+	public WPI_TalonSRX leftFrontMotor = new WPI_TalonSRX(RobotMap.leftFrontMotor);
+	public WPI_TalonSRX leftBackMotor = new WPI_TalonSRX(RobotMap.leftBackMotor);
+	public WPI_TalonSRX rightFrontMotor = new WPI_TalonSRX(RobotMap.rightFrontMotor);
+	public WPI_TalonSRX rightBackMotor = new WPI_TalonSRX(RobotMap.rightBackMotor);
 	
 	public SpeedControllerGroup leftMotors = new SpeedControllerGroup(leftFrontMotor, leftBackMotor);
 	public SpeedControllerGroup rightMotors = new SpeedControllerGroup(rightFrontMotor, rightBackMotor);
@@ -35,18 +36,17 @@ public class DriveTrain extends Subsystem {
 	@Override
 	protected void initDefaultCommand() {
 		setDefaultCommand(new DriveWithJoystick());
-		switchSquaredSpeed();
-		switchSquaredSpeed();
-		switchSquaredSpeed();
+		SmartDashboard.putBoolean("Squared Speed", squaredSpeed);
 	}
 	
 	public void switchSquaredSpeed() {
-		squaredSpeed = !squaredSpeed;
+		squaredSpeed = !squaredSpeed;		
+		SmartDashboard.putBoolean("Squared Speed", squaredSpeed);
 	}
 	
 	public void tankDrive(Joystick controller) {
 		// TODO Figure out the actual axis value for logitech controller
-		tankDrive(controller.getY(), controller.getRawAxis(4));
+		tankDrive(controller.getRawAxis(1), controller.getRawAxis(5));
 	}
 	
 	public void tankDrive(double leftValue, double rightValue) {

@@ -12,7 +12,7 @@ public class SwitchSquaredDriving extends Command {
 	@Override
 	protected void initialize() {
 		super.initialize();
-		requires(Robot.driveTrain);
+//		requires(Robot.driveTrain);
 	}
 	
 	@Override
@@ -24,6 +24,6 @@ public class SwitchSquaredDriving extends Command {
 	@Override
 	protected boolean isFinished() {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 }
