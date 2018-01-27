@@ -1,13 +1,10 @@
 package org.usfirst.frc.team7072.robot.subsystems;
 
-import java.awt.peer.LightweightPeer;
-
 import org.usfirst.frc.team7072.robot.RobotMap;
 import org.usfirst.frc.team7072.robot.commands.DriveWithJoystick;
 
-import edu.wpi.first.wpilibj.PWMTalonSRX;
-
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.PWMTalonSRX;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
