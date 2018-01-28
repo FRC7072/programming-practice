@@ -1,6 +1,9 @@
 package org.usfirst.frc.team7072.robot.commands;
 
 import org.usfirst.frc.team7072.robot.Robot;
+import org.usfirst.frc.team7072.robot.RobotMap;
+
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -8,19 +11,17 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class DriveWithJoystick extends Command {
 
+	Joystick pilot = Robot.oi.getPilotController();
+	
     public DriveWithJoystick() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.driveTrain);
     }
 
-    // Called just before this Command runs the first time
-    protected void initialize() {
-    }
-
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.driveTrain.tankDrive(Robot.oi.getPilotController());
+    	Robot.driveTrain.tankDrive(pilot.getRawAxis(RobotMap.leftJoystickYAxis), RobotMap.rightJoystickYAxis);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -31,10 +32,5 @@ public class DriveWithJoystick extends Command {
     // Called once after isFinished returns true
     protected void end() {
     	Robot.driveTrain.stop();
-    }
-
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
-    protected void interrupted() {
     }
 }

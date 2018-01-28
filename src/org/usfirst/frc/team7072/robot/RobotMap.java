@@ -7,22 +7,30 @@ package org.usfirst.frc.team7072.robot;
  * floating around.
  */
 public class RobotMap {
-	// For example to map the left and right motors, you could define the
-	// following variables to use with your drivetrain subsystem.
-	// public static int leftMotor = 1;
-	// public static int rightMotor = 2;
 	
 	//Talon ports
+	public static final int leftBackMotor 	= 10;
+	public static final int leftFrontMotor 	= 11;
+	public static final int rightBackMotor 	= 12;
+	public static final int rightFrontMotor = 13;
 	
-	public static int leftBackMotor = 1;
-	public static int leftFrontMotor = 7;
 	
-	public static int rightBackMotor = 9;
-	public static int rightFrontMotor = 2;
-	
+	//Logitech controller raw axis numbers
+	public static final int leftJoystickYAxis 	= 1;
+	public static final int rightJoystickYAxis 	= 5;
+	public static final int leftJoystickXAxis 	= 0;
+	public static final int rightJoystickXAxis 	= 4;
 
-	// If you are using multiple modules, make sure to define both the port
-	// number and the module. For example you with a rangefinder:
-	// public static int rangefinderPort = 1;
-	// public static int rangefinderModule = 1;
+	
+	//Logitech controller button numbers
+	public static final int joystickButtonA 				= 1;
+	public static final int joystickButtonB 				= 2;
+	public static final int joystickButtonX				= 3;
+	public static final int joystickButtonY 				= 4;
+	public static final int joystickLeftBumper 			= 5;
+	public static final int joystickRightBumper 			= 6;
+	public static final int joystickButtonBack 			= 7;
+	public static final int joystickButtonsStart 		= 8;
+	public static final int joystickButtonLeftStick 		= 9;
+	public static final int joystickButtonRightStick 	= 10;
 }
